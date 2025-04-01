@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function load(){
+			$.getJSON( "https://player.rogersradio.ca/ckis/widget/recently_played", function( data ) {
+			  var items = [];
+			  $.each( data, function( key, val ) {
+				items.push( "<li id='" + key + "'>" + val.started_at + "   <b>" + val.artist  + "</b>: <u>" + val.song_title  + "</u></li>" );
+			  });
+			 
+			  $( "<ul/>", {
+				"class": "my-new-list",
+				html: items.join( "" )
+			  }).appendTo( "body" );
+			});
+		}
+	</script>
+</head>
+<body onload="load()">
+</body>
+</html>
